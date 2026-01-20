@@ -1,8 +1,9 @@
-fn = "/Users/takahiro/Desktop/scan/250111_itoExp/xyz.csv";
+fn = "/Users/koshiba/Desktop/xyz.csv";
 dd = readmatrix(fn);
+
 %%
 % d = dd(dd(:, 2) <-600, :); interval = 1;
-d = dd; interval = 50;
+d = dnew; interval = 5;
 scatter3(d(1:interval:end, 1),...
          d(1:interval:end, 2),...
          d(1:interval:end, 3),...
@@ -10,11 +11,12 @@ scatter3(d(1:interval:end, 1),...
 axis equal
 
 %%
-ctmp = jet;
-ctmp(1:110, :) = 0;
+ctmp = sky;
+k = 17;
+ctmp(1:k, :) = repmat([1, 0, 0], k, 1);
 colormap(ctmp);
 c = colorbar;
-c.Limits = [0, 15];
+clim([0, 15])
 ax = gca;
 ax.Color = 'w';
 
@@ -24,6 +26,7 @@ dnew = zeroSet(dd, ref);
 %%
 writematrix(dnew, "/Users/takahiro/Desktop/scan/250111_itoExp/xyzNew.csv");
 
+%%
 function d = zeroSet(d, ref)
     N = length(ref);
     [x, y, z] = deal(zeros(N, 1));

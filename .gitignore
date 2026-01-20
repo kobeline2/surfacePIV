@@ -8,7 +8,7 @@
 # Dropbox 側に置いたデータ置き場（シンボリックリンク）
 # GitHub にデータを絶対に入れないため必須
 data_shared/
-derivalable/
+deliverable/
 out/
 res/
 
