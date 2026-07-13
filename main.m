@@ -12,21 +12,21 @@ init
 
 %% read csv
 % fn = "/Volumes/tk_main/selflining/PIV/case3_1/before/outer/shot1/";
-dirPathList = ["/Volumes/Untitled/shonai/data/inflow/12121/per15sec"];
-interval = 15;
+dirPathList = ["~/Library/CloudStorage/Dropbox/git_ignored/surfacePIV/data_shared/example/per1sec"];
+interval = 1;
 % [d, coordX, coordY, columnNames] = readFlownizerCsv(fn); % signle csv
-[d15, Meta15] = readFlowNizerCsvSeq(dirPathList, interval); % sequential csv
+[d1, Meta1] = readFlowNizerCsvSeq(dirPathList, interval); % sequential csv
 
 %% view data
 ind = 6;
 d = d1;
-Meta = Meta2;
+Meta = Meta1;
 % viewMovie(dValid, 2, Meta)
 viewVector(d, Meta)
 
 %% check mean vector
-inTime = 300:350;
-d = dMerge(:, :, :, inTime); Meta = Meta4;
+inTime = 10:50;
+d = d1(:, :, :, inTime); Meta = Meta1;
 meanV = nanmedian(d, 4);
 viewVector(meanV, Meta, 'roundOder', 1, 'maxc',0.5, 'scale', 4);
 
